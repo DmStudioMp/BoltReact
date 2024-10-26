@@ -1,0 +1,35 @@
+{
+  "name": "boltreact",
+  "version": "1.0.0",
+  "description": "boltreact es una poderosa librería de componentes React que simplifica el desarrollo de interfaces de usuario interactivas y responsivas. Incluye una variedad de componentes reutilizables, como calendarios, carruseles, formularios y modales, que son fáciles de implementar y personalizar.",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DmStudioMp/boltreact.git"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "library"
+  ],
+  "author": "Daniel Morales",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.2",
+    "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "jest": "^27.0.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

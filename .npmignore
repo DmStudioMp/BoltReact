@@ -1,0 +1,36 @@
+pods/
+# Ignorar archivos de configuración de IDEs
+.idea/
+.vscode/
+*.iml
+
+# Ignorar archivos de construcción y distribución
+dist/
+build/
+*.log
+*.tmp
+
+# Ignorar archivos de prueba
+__tests__/
+tests/
+*.test.js
+*.spec.js
+
+# Ignorar dependencias de desarrollo
+node_modules/
+package-lock.json
+
+# Ignorar archivos de documentación
+README.md
+LICENSE
+
+# Ignorar archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de entorno
+.env
+.env.local
+.env.development
+.env.production
+.env.test
