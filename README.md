@@ -28,6 +28,7 @@ npm install boltreact
 
 🔧 Usage
 Get started by importing the components you need:
+
 ```
 import { Carrousel, Modal, Forms } from 'boltreact';
 import 'boltreact/dist/styles.css';
@@ -44,6 +45,7 @@ function App() {
   );
 }
 ```
+
 Example Components
 Carrousel: A simple yet powerful carousel for your image galleries.
 Modal: A versatile modal with customizable opening and closing logic.
@@ -52,19 +54,22 @@ Forms: Easy-to-implement forms with validation support.
 🎨 Customization
 BoltReact provides CSS files for easy customization. You can modify the styles to fit your brand’s design by overriding the default classes in your own stylesheet.
 
-/* Example: Override Modal styles */
+/_ Example: Override Modal styles _/
+
 ```
 .boltreact-modal {
   background-color: #333;
   color: #fff;
 }
 ```
+
 🛠️ Available Components
+
 - **Calendar**: Display date pickers or event calendars with ease.
 - **Carrousel**: Engage users with interactive image carousels.
 - **Forms**: Simplified form handling with built-in validation.
 - **Modal**: Pop-up modals for content display.
-More components coming soon!
+  More components coming soon!
 
 📖 Documentation
 Detailed documentation and examples are available in the Wiki.
@@ -73,7 +78,7 @@ Detailed documentation and examples are available in the Wiki.
 We welcome contributions! Check out our contributing guide to get started, and feel free to open issues or pull requests.
 
 🛡️ License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 👨‍💻 Author
 BoltReact is maintained by DmStudioMp.
