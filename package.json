@@ -1,6 +1,6 @@
 {
   "name": "boltreact",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "boltreact es una poderosa librería de componentes React que simplifica el desarrollo de interfaces de usuario interactivas y responsivas. Incluye una variedad de componentes reutilizables, como calendarios, carruseles, formularios y modales, que son fáciles de implementar y personalizar.",
   "main": "src/index.js",
   "scripts": {
