@@ -28,10 +28,10 @@ npm install boltreact
 
 🔧 Usage
 Get started by importing the components you need:
-
+```
 import { Carrousel, Modal, Forms } from 'boltreact';
 import 'boltreact/dist/styles.css';
-```
+
 function App() {
   return (
     <div>
