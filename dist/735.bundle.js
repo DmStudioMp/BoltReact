@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkboltreact=self.webpackChunkboltreact||[]).push([[735],{735:(t,e,a)=>{a.r(e),a.d(e,{default:()=>r});var c=a(540);function r(t){var e=t.indicators,a=t.id;return c.createElement("div",{className:"carousel-indicators justify-content-center"},e.map((function(t,e){return c.createElement("button",{key:e,type:"button","data-bs-target":"#".concat(a),"data-bs-slide-to":e,className:t.status?"active":"","aria-current":t.status?"true":void 0,"aria-label":"Slide ".concat(e+1)})})))}}}]);
+//# sourceMappingURL=735.bundle.js.map

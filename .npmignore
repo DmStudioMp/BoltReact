@@ -1,32 +1,38 @@
+# Ignorar directorios y archivos innecesarios
 pods/
+src/
+build/
+node_modules/
+package-lock.json
+
 # Ignorar archivos de configuración de IDEs
 .idea/
 .vscode/
 *.iml
 
 # Ignorar archivos de construcción y distribución
-dist/
-build/
 *.log
 *.tmp
+*.cache
 
 # Ignorar archivos de prueba
 __tests__/
 tests/
 *.test.js
 *.spec.js
+coverage/
+*.snap
 
-# Ignorar dependencias de desarrollo
-node_modules/
-package-lock.json
-
-# Ignorar archivos de documentación
-README.md
+# Ignorar archivos de documentación y licencias
 LICENSE
+README.md
+CHANGELOG.md
 
 # Ignorar archivos de sistema
 .DS_Store
 Thumbs.db
+*.bak
+*.swp
 
 # Ignorar archivos de entorno
 .env
@@ -34,3 +40,8 @@ Thumbs.db
 .env.development
 .env.production
 .env.test
+
+# Ignorar archivos de configuración de herramientas
+*.config.js
+*.config.ts
+*.config.json

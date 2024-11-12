@@ -1,9 +1,8 @@
 import React from "react";
-import { useState } from "react";
-
+import "./styles/Forms.css";
 /* ------------------------------------------ Inputs -----------------------------------------------------------*/
 
-export function Text_input(props) {
+export function TextInput(props) {
   return (
     <div className="form-floating container-fluid">
       <input
@@ -18,7 +17,7 @@ export function Text_input(props) {
   );
 }
 
-export function Options_input(props) {
+export function OptionsInput(props) {
   return (
     <div className="container-fluid m-2">
       <label htmlFor={props.id} className="form-label">
@@ -26,7 +25,7 @@ export function Options_input(props) {
       </label>
 
       <select id={props.id} onChange={props.change}>
-        <option value="">choise from list</option>
+        <option value="">Choose from list</option>
         {props.options.map((item, index) => {
           return (
             <option key={index} value={item}>
@@ -39,7 +38,7 @@ export function Options_input(props) {
   );
 }
 
-export function Number_input(props) {
+export function NumberInput(props) {
   return (
     <div className="form-floating container-fluid">
       <input
@@ -55,7 +54,7 @@ export function Number_input(props) {
   );
 }
 
-export function Password_input(props) {
+export function PasswordInput(props) {
   return (
     <div className="form-floating container-fluid">
       <input
@@ -71,7 +70,7 @@ export function Password_input(props) {
   );
 }
 
-export function Email_input(props) {
+export function EmailInput(props) {
   return (
     <div className="form-floating container-fluid">
       <input
@@ -87,7 +86,7 @@ export function Email_input(props) {
   );
 }
 
-export function Image_input(props) {
+export function ImageInput(props) {
   return (
     <img
       id={props.id}
@@ -100,11 +99,11 @@ export function Image_input(props) {
   );
 }
 
-export function Title_container(props) {
+export function TitleContainer(props) {
   return <h1 className="h3 mb-3 fw-normal">{props.text}</h1>;
 }
 
-export function Date_input(props) {
+export function DateInput(props) {
   return (
     <div id="date-input" className="form-floating container-fluid">
       <input
@@ -121,7 +120,7 @@ export function Date_input(props) {
   );
 }
 
-export function Submit_button(props) {
+export function SubmitButton(props) {
   return (
     <button
       id={props.id}
@@ -134,7 +133,7 @@ export function Submit_button(props) {
   );
 }
 
-export function Field_input(props) {
+export function FieldInput(props) {
   return (
     <div className="mb-3">
       <label className="form-label" htmlFor={props.id}>
@@ -142,14 +141,15 @@ export function Field_input(props) {
       </label>
       <input
         className="form-control"
-        id={props.id} // Ensure this matches the label's "for" attribute
-        name={`${props.id}input`} // Or whatever naming convention you want
+        id={props.id}
+        name={`${props.id}input`}
         type="file"
-        onChange={props.change} // Make sure to use the change handler
+        onChange={props.change}
       />
     </div>
   );
 }
+
 /* ------------------------------------------ Forms -----------------------------------------------------------*/
 export default function Forms(props) {
   return (

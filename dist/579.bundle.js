@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkboltreact=self.webpackChunkboltreact||[]).push([[579],{579:(e,t,n)=>{n.r(t),n.d(t,{default:()=>a});var r=n(75),u=n(540);function a(){var e=arguments.length>0&&void 0!==arguments[0]&&arguments[0],t=(0,u.useState)(e),n=(0,r.A)(t,2),a=n[0],o=n[1];return{isOpen:a,openModal:function(){return o(!0)},closeModal:function(){return o(!1)}}}}}]);
+//# sourceMappingURL=579.bundle.js.map

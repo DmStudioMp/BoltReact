@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Modal.css";
+import "./styles/Modal.css";
 
 function Modal({ children, isOpen, closeModal }) {
   return (
