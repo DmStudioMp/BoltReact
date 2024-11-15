@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/Forms.css";
+
 /* ------------------------------------------ Inputs -----------------------------------------------------------*/
 
 export function TextInput(props) {
@@ -10,8 +11,9 @@ export function TextInput(props) {
         className="form-control"
         id={props.id}
         placeholder={props.text}
+        aria-label={props.text_label}
         onChange={props.change}
-      ></input>
+      />
       <label htmlFor={props.id}>{props.text_label}</label>
     </div>
   );
@@ -23,16 +25,17 @@ export function OptionsInput(props) {
       <label htmlFor={props.id} className="form-label">
         {props.text_label}
       </label>
-
-      <select id={props.id} onChange={props.change}>
+      <select
+        id={props.id}
+        onChange={props.change}
+        aria-label={props.text_label}
+      >
         <option value="">Choose from list</option>
-        {props.options.map((item, index) => {
-          return (
-            <option key={index} value={item}>
-              {item}
-            </option>
-          );
-        })}
+        {props.options.map((item, index) => (
+          <option key={index} value={item}>
+            {item}
+          </option>
+        ))}
       </select>
     </div>
   );
@@ -45,10 +48,10 @@ export function NumberInput(props) {
         type="number"
         id={props.id}
         className="form-control"
-        onChange={props.change}
         placeholder={props.text_input}
-      ></input>
-
+        aria-label={props.text_label}
+        onChange={props.change}
+      />
       <label htmlFor={props.id}>{props.text_label}</label>
     </div>
   );
@@ -61,10 +64,11 @@ export function PasswordInput(props) {
         type="password"
         className="form-control"
         id={props.id}
+        placeholder={props.text_input}
+        aria-label={props.text_label}
         onChange={props.change}
         autoComplete="current-password"
-        placeholder={props.text_input}
-      ></input>
+      />
       <label htmlFor={props.id}>{props.text_label}</label>
     </div>
   );
@@ -78,9 +82,9 @@ export function EmailInput(props) {
         className="form-control"
         id={props.id}
         placeholder="name@example.com"
+        aria-label="Email"
         onChange={props.change}
-      ></input>
-
+      />
       <label htmlFor={props.id}>Email</label>
     </div>
   );
@@ -92,10 +96,10 @@ export function ImageInput(props) {
       id={props.id}
       className="mb-4 d-flex rounded-circle"
       src={props.img}
-      alt=""
+      alt={props.alt || "Image placeholder"}
       width="72"
       height="57"
-    ></img>
+    />
   );
 }
 
@@ -110,11 +114,10 @@ export function DateInput(props) {
         type="date"
         className="form-control"
         id={props.id}
-        name={`${props.id}input`}
         placeholder={props.text}
+        aria-label={props.text_label}
         onChange={props.change}
-      ></input>
-
+      />
       <label htmlFor={props.id}>{props.text_label}</label>
     </div>
   );
@@ -142,8 +145,8 @@ export function FieldInput(props) {
       <input
         className="form-control"
         id={props.id}
-        name={`${props.id}input`}
         type="file"
+        aria-label={props.text_label}
         onChange={props.change}
       />
     </div>
@@ -151,11 +154,12 @@ export function FieldInput(props) {
 }
 
 /* ------------------------------------------ Forms -----------------------------------------------------------*/
-export default function Forms(props) {
+export function Forms(props) {
   return (
     <form
       id={props.id}
-      className=" p-1 d-flex flex-column container-fluid align-items-center justify-content-center"
+      className="p-1 d-flex flex-column container-fluid align-items-center justify-content-center"
+      role="form" // Asegura que el elemento sea identificado como formulario
       onSubmit={props.onSubmit}
     >
       {props.children}

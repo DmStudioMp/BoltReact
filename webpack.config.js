@@ -1,89 +1,70 @@
-const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer"); // Asegúrate de importar esto
+const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
-module.exports = {
-  mode: "production",
-  entry: "./src/index.js",
-  output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "/",
-  },
-  resolve: {
-    extensions: [".js", ".jsx", ".json"],
-  },
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
-            plugins: ["@babel/plugin-transform-runtime"],
+const path = require("path");
+
+module.exports = (env, argv) => {
+  const isDevelopment = argv.mode !== "production";
+
+  return {
+    mode: isDevelopment ? "development" : "production",
+    entry: "./src/index.js",
+    output: {
+      path: path.resolve(__dirname, "dist"),
+      filename: isDevelopment ? "[name].js" : "[name].[contenthash].js",
+      publicPath: "/",
+      clean: true,
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-env", "@babel/preset-react"],
+              plugins: ["@babel/plugin-transform-runtime"],
+            },
           },
         },
-      },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/,
-        use: ["file-loader"],
-      },
-      {
-        test: /\.mjs$/,
-        type: "javascript/auto",
-      },
-    ],
-  },
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    port: 3000,
-    hot: true,
-    historyApiFallback: true,
-  },
-  plugins: [
-    new BundleAnalyzerPlugin(), // Asegúrate de que esto esté aquí
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css",
-    }),
-  ],
-  devtool: "source-map",
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-      minSize: 20000,
-      maxSize: 70000,
-      minChunks: 1,
-      maxAsyncRequests: 30,
-      maxInitialRequests: 30,
-      automaticNameDelimiter: "~",
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          chunks: "all",
-          minSize: 0,
+        {
+          test: /\.css$/,
+          use: [
+            isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
+            "css-loader",
+          ],
         },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true,
+        {
+          test: /\.(png|jpe?g|gif|svg)$/,
+          type: "asset",
+          parser: {
+            dataUrlCondition: {
+              maxSize: 8192, // 8kb
+            },
+          },
         },
-      },
+      ],
     },
-  },
-  stats: {
-    warnings: true,
-    errors: true,
-    errorDetails: true,
-  },
+    plugins: [
+      new CleanWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        template: "./public/index.html",
+      }),
+      new MiniCssExtractPlugin({
+        filename: isDevelopment ? "[name].css" : "[name].[contenthash].css",
+      }),
+      new BundleAnalyzerPlugin({
+        analyzerMode: isDevelopment ? "server" : "disabled",
+      }),
+    ],
+    optimization: {
+      minimize: !isDevelopment,
+      minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+    },
+  };
 };
