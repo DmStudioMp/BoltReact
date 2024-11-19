@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../styles/Carrousel.css";
+import "./Carrousel.css";
 
 import Indicators from "./Indicators/Indicators.jsx";
 import Controls from "./Controls/Controls.jsx";
