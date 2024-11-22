@@ -64,3 +64,6 @@ src/**/*.config.js
 src/**/*.spec.js
 src/**/*.test.js
 src/**/*.test.jsx
+
+# Files to ignore
+estructura.txt
