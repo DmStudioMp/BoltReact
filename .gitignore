@@ -67,3 +67,4 @@ src/**/*.test.jsx
 
 # Files to ignore
 estructura.txt
+.gitmodules

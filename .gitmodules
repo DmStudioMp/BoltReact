@@ -1,0 +1,7 @@
+[submodule "src/Components/Cards"]
+    path = src/Components/Cards
+    url = http://localhost:3000/BoltReact/Cards.git
+
+[submodule "src/Components/GridSystem"]
+    path = src/Components/GridSystem
+    url = http://localhost:3000/BoltReact/GridSystem.git
