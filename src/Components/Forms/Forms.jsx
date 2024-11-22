@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/Forms.css";
+import "./Forms.css";
 
 /* ------------------------------------------ Inputs -----------------------------------------------------------*/
 

@@ -1,47 +1,60 @@
-# Ignorar directorios y archivos innecesarios
+# Ignorar directorios innecesarios
 pods/
 src/
-build/
 node_modules/
-package-lock.json
+coverage/
+__tests__/
+tests/
+temp/
+tmp/
 
-# Ignorar archivos de configuración de IDEs
-.idea/
-.vscode/
-*.iml
-
-# Ignorar archivos de construcción y distribución
+# Ignorar archivos temporales y de logs
 *.log
 *.tmp
 *.cache
-
-# Ignorar archivos de prueba
-__tests__/
-tests/
-*.test.js
-*.spec.js
-coverage/
-*.snap
-
-# Ignorar archivos de documentación y licencias
-LICENSE
-README.md
-CHANGELOG.md
-
-# Ignorar archivos de sistema
-.DS_Store
-Thumbs.db
 *.bak
 *.swp
 
 # Ignorar archivos de entorno
 .env
-.env.local
-.env.development
-.env.production
-.env.test
+.env.*
+!env.example # Permitir un archivo de ejemplo
 
-# Ignorar archivos de configuración de herramientas
-*.config.js
-*.config.ts
-*.config.json
+# Ignorar archivos relacionados con el desarrollo
+.idea/
+.vscode/
+*.iml
+*.spec.js
+*.test.js
+*.test.jsx
+*.snap
+
+# Ignorar archivos de configuración
+*.config.*
+*.babelrc
+*.eslintrc.*
+webpack.config.js
+jest.config.js
+jest.setup.js
+
+# Ignorar archivos de documentación (mantén solo los necesarios para el paquete)
+CHANGELOG.md
+LICENSE
+README.md
+
+# Ignorar archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar directorios y archivos específicos de construcción
+build/
+dist/
+!dist/** # Incluir solo los archivos procesados dentro de `dist/`
+
+# Ignorar bloqueos de dependencias
+package-lock.json
+yarn.lock
+
+# Ignorar la carpeta git y Dockerfiles
+.git/
+Dockerfile*

@@ -3,9 +3,8 @@ module.exports = {
   testPathIgnorePatterns: ["/node_modules/", "/dist/", "/public/"],
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
-    "\\.(jpg|jpeg|png|gif|webp|svg)$": "<rootDir>/__mocks__/fileMock.js",
   },
-  moduleFileExtensions: ["js", "jsx"],
+  moduleFileExtensions: ["js", "jsx", "json"],
   transform: {
     "^.+\\.(js|jsx)$": "babel-jest",
   },

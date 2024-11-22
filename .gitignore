@@ -1,36 +1,66 @@
+# Project directories
 pods/
+build/
+dist/
+lib/
+public/
+tmp/
+temp/
+
 # Node modules
 node_modules/
-npm-debug.log
-yarn-error.log
 
-# Build output
-
-build/
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-error.log*
 
 # Environment variables
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Logs
-logs
-*.log
+.env.*
+!.env.example
 
 # Dependency directories
 jspm_packages/
 
-# IDE files
+# IDE files and system files
 .idea/
 .vscode/
 .DS_Store
 Thumbs.db
-
-# Temporary files
-tmp/
-temp/
+*.swp
 
 # Coverage directory
 coverage/
+
+# Test snapshots
+__snapshots__/
+
+# Git-related
+.git/
+.gitignore
+
+# Output reports
+bundle-report.html
+*.report.html
+*.report.json
+
+# Temporary build files
+*.bak
+*.tmp
+*.cache
+*.lock
+
+# Private keys and credentials (if applicable)
+*.pem
+*.key
+*.crt
+
+# Custom project files (specific to BoltReact)
+src/__tests__/
+src/__mocks__/
+src/**/*.config.js
+src/**/*.spec.js
+src/**/*.test.js
+src/**/*.test.jsx

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import Modal from "../Components/Modal";
+import Modal from "../Components/Modal/Modal.jsx";
 
 describe("Modal Component", () => {
   test("renders correctly when closed", () => {

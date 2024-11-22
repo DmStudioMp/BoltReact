@@ -4,6 +4,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import {
   Forms,
   TextInput,
+  SubmitButton,
   OptionsInput,
   NumberInput,
   PasswordInput,
@@ -11,9 +12,8 @@ import {
   ImageInput,
   TitleContainer,
   DateInput,
-  SubmitButton,
   FieldInput,
-} from "../Components/Forms";
+} from "../Components/Forms/Forms.jsx";
 
 describe("Forms Component and Subcomponents", () => {
   test("Forms renders with children and handles submit", () => {

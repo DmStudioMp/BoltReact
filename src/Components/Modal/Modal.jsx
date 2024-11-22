@@ -1,6 +1,7 @@
 // Modal.jsx
 import React from "react";
 import PropTypes from "prop-types";
+import "./Modal.css";
 
 const Modal = ({ isOpen, closeModal, children }) => {
   if (!isOpen) return null;

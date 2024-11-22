@@ -4,6 +4,7 @@ import "./Carrousel.css";
 
 import Indicators from "./Indicators/Indicators.jsx";
 import Controls from "./Controls/Controls.jsx";
+import Slides from "./Slides/Slides.jsx"; // Asegúrate de tener el componente Slides
 import { v4 as uuidv4 } from "uuid";
 
 function CarrouselInner({ children }) {
@@ -15,32 +16,38 @@ CarrouselInner.propTypes = {
 };
 
 /* Carrousel Component */
-export default function Carrousel(props) {
-  const slides = props.slides;
-  const children = props.children;
-  const id = props.id || `carousel-${uuidv4()}`;
+const Carrousel = ({ slides = [], id, children }) => {
+  if (slides.length === 0) return null;
+
+  const uniqueId = id || uuidv4();
 
   return (
-    <div
-      id={id}
-      className="carousel slide"
-      data-bs-ride="carousel"
-      aria-label="Image Carousel"
-    >
-      <Indicators indicators={slides} id={id} />
-      <CarrouselInner>{children}</CarrouselInner>
-      <Controls id={id} />
+    <div className="carousel" id={uniqueId}>
+      <CarrouselInner>
+        <Slides slides={slides} />
+      </CarrouselInner>
+      <Indicators slides={slides} carouselId={uniqueId} />
+      <Controls carouselId={uniqueId} />
+      {children && <div className="extra-content">{children}</div>}
     </div>
   );
-}
+};
 
 Carrousel.propTypes = {
-  slides: PropTypes.arrayOf(PropTypes.object).isRequired,
-  children: PropTypes.node.isRequired,
+  slides: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      content: PropTypes.node,
+    })
+  ).isRequired,
+  children: PropTypes.node,
   id: PropTypes.string,
 };
 
 Carrousel.defaultProps = {
   slides: [],
   id: null,
+  children: null,
 };
+
+export default Carrousel;

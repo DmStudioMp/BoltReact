@@ -1,63 +1,50 @@
-// Importa Bootstrap CSS
+import React, { lazy, Suspense } from "react";
+import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/js/dist/carousel";
+import "bootstrap/js/dist/modal";
 
-// Carga dinámica de componentes individuales
-const loadCarrousel = () => import("./Components/Carrousel/Carrousel.jsx");
-const loadSlide = () => import("./Components/Carrousel/Slides/Slides.jsx");
-const loadControls = () =>
-  import("./Components/Carrousel/Controls/Controls.jsx");
-const loadIndicators = () =>
-  import("./Components/Carrousel/Indicators/Indicators.jsx");
-const loadForms = () => import("./Components/Forms.jsx");
-const loadModal = () => import("./Components/Modal.jsx");
-const loadUseModal = () => import("./Components/UseModal.js");
+// Lazy Loading de componentes personalizados
+const Carrousel = lazy(() => import("./Components/Carrousel/Carrousel.jsx"));
+const Controls = lazy(() =>
+  import("./Components/Carrousel/Controls/Controls.jsx")
+);
+const Indicators = lazy(() =>
+  import("./Components/Carrousel/Indicators/Indicators.jsx")
+);
+const Slides = lazy(() => import("./Components/Carrousel/Slides/Slides.jsx"));
+const Forms = lazy(() => import("./Components/Forms/Forms.jsx"));
+const CustomModal = lazy(() => import("./Components/Modal/Modal.jsx"));
+const UseModal = lazy(() => import("./Components/Modal/UseModal.js"));
+const GridSystem = lazy(() => import("./Components/GridSystem/GridSystem.jsx"));
+const Cards = lazy(() => import("./Components/Cards/Cards.jsx"));
 
-// Almacena las promesas de carga en un objeto
-const components = {
-  Carrousel: loadCarrousel(),
-  Slide: loadSlide(),
-  Controls: loadControls(),
-  Indicators: loadIndicators(),
-  Forms: loadForms(),
-  Modal: loadModal(),
-  useModal: loadUseModal(),
-};
+export default function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      {/* Utiliza aquí los componentes que se cargarán de forma diferida */}
+      <Carrousel>
+        <Slides />
+        <Controls />
+        <Indicators />
+      </Carrousel>
+      <Forms />
+      <CustomModal />
+      <GridSystem />
+      <Cards />
+    </Suspense>
+  );
+}
 
-// Exportar componentes de forma dinámica
-export const SlideImg = components.Slide.then((module) => module.SlideImg);
-export const TextInput = components.Forms.then((module) => module.TextInput);
-export const OptionsInput = components.Forms.then(
-  (module) => module.OptionsInput
-);
-export const NumberInput = components.Forms.then(
-  (module) => module.NumberInput
-);
-export const PasswordInput = components.Forms.then(
-  (module) => module.PasswordInput
-);
-export const EmailInput = components.Forms.then((module) => module.EmailInput);
-export const ImageInput = components.Forms.then((module) => module.ImageInput);
-export const TitleContainer = components.Forms.then(
-  (module) => module.TitleContainer
-);
-export const DateInput = components.Forms.then((module) => module.DateInput);
-export const SubmitButton = components.Forms.then(
-  (module) => module.SubmitButton
-);
-export const FieldInput = components.Forms.then((module) => module.FieldInput);
-
-// Exportar como default el conjunto de componentes
-export default {
-  ...components,
-  SlideImg,
-  TextInput,
-  OptionsInput,
-  NumberInput,
-  PasswordInput,
-  EmailInput,
-  ImageInput,
-  TitleContainer,
-  DateInput,
-  SubmitButton,
-  FieldInput,
+// Exportación de todos los componentes para reutilización
+export {
+  Carrousel,
+  Controls,
+  Indicators,
+  Slides,
+  Forms,
+  CustomModal as Modal, // Usar alias al exportar para evitar conflicto
+  UseModal,
+  GridSystem,
+  Cards,
 };
