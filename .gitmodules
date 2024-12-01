@@ -5,3 +5,12 @@
 [submodule "src/Components/GridSystem"]
     path = src/Components/GridSystem
     url = http://localhost:3000/BoltReact/GridSystem.git
+[submodule "src/Components/Modal"]
+    path = src/Components/Modal
+    url = http://localhost:3000/BoltReact/Modal.git
+[submodule "src/Components/Forms"]
+    path = src/Components/Forms
+    url = http://localhost:3000/BoltReact/Forms.git
+[submodule "src/Components/Carrousel"]
+    path = src/Components/Carrousel
+    url = http://localhost:3000/BoltReact/Carrousel.git

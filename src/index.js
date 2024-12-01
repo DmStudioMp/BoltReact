@@ -1,5 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import "./index.css";
+
+// Importaciones específicas de Bootstrap para reducir el tamaño del bundle
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/js/dist/carousel";
 import "bootstrap/js/dist/modal";
@@ -21,8 +23,8 @@ const Cards = lazy(() => import("./Components/Cards/Cards.jsx"));
 
 export default function App() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      {/* Utiliza aquí los componentes que se cargarán de forma diferida */}
+    <Suspense fallback={<Loading />}>
+      {/* Renderización diferida de los componentes */}
       <Carrousel>
         <Slides />
         <Controls />
@@ -36,14 +38,23 @@ export default function App() {
   );
 }
 
-// Exportación de todos los componentes para reutilización
+// Componente para mejorar el fallback de Suspense
+function Loading() {
+  return (
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <p>Cargando contenido...</p>
+    </div>
+  );
+}
+
+// Exportación de todos los componentes para reutilización en proyectos externos
 export {
   Carrousel,
   Controls,
   Indicators,
   Slides,
   Forms,
-  CustomModal as Modal, // Usar alias al exportar para evitar conflicto
+  CustomModal as Modal, // Alias para evitar conflictos
   UseModal,
   GridSystem,
   Cards,

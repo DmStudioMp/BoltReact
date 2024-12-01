@@ -1,15 +1,17 @@
 {
   "name": "boltreact",
-  "version": "1.1.3",
-  "description": "boltreact es una poderosa librería de componentes React...",
-  "main": "dist/index.min.js",
+  "version": "1.1.4",
+  "description": "BoltReact es una poderosa librería de componentes React para crear interfaces modernas y dinámicas.",
+  "main": "dist/main.min.js",
   "files": [
-    "dist"
+    "dist",
+    "LICENSE.md",
+    "README.md"
   ],
   "scripts": {
     "start": "webpack serve --mode development",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
+    "build": "npm run clean && webpack --mode production",
+    "clean": "rimraf dist",
     "test": "jest"
   },
   "repository": {
@@ -20,16 +22,21 @@
     "react",
     "components",
     "ui",
-    "library"
+    "library",
+    "frontend"
   ],
   "author": "Daniel Morales",
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^5.3.3",
     "prop-types": "^15.7.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "uuid": "^11.0.3"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.9",
@@ -38,26 +45,20 @@
     "@babel/plugin-transform-runtime": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/react-hooks": "^8.0.1",
     "babel-loader": "^9.2.1",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
-    "file-loader": "^6.2.0",
-    "glob": "^11.0.0",
     "html-webpack-plugin": "^5.6.3",
-    "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "json-loader": "^0.5.7",
     "mini-css-extract-plugin": "^2.9.2",
-    "purgecss-webpack-plugin": "^6.0.0",
+    "rimraf": "^5.0.1",
     "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.8",
     "webpack": "^5.96.1",
     "webpack-bundle-analyzer": "^4.10.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
   },
   "publishConfig": {
     "access": "public"
