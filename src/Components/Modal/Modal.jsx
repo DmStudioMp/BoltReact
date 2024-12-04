@@ -1,9 +1,12 @@
-// Modal.jsx
 import React from "react";
 import PropTypes from "prop-types";
 import "./Modal.css";
 
-const Modal = ({ isOpen, closeModal, children }) => {
+export default function Modal({
+  isOpen = false, // Valor predeterminado
+  closeModal = () => {}, // Función vacía por defecto
+  children = null, // Valor predeterminado para evitar errores con `children`
+}) {
   if (!isOpen) return null;
 
   return (
@@ -16,16 +19,10 @@ const Modal = ({ isOpen, closeModal, children }) => {
       </div>
     </div>
   );
-};
+}
 
 Modal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool, // Ya no es requerido, tiene un valor predeterminado
+  closeModal: PropTypes.func, // Ya no es requerido, tiene un valor predeterminado
   children: PropTypes.node, // No obligatorio
 };
-
-Modal.defaultProps = {
-  children: "Default Content", // Contenido por defecto
-};
-
-export default Modal;

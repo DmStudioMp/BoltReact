@@ -1,23 +1,70 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const path = require("path");
 
 module.exports = (env, argv) => {
-  const isDevelopment = argv && argv.mode !== "production";
+  const isDevelopment = argv.mode === "development";
 
   return {
     mode: isDevelopment ? "development" : "production",
     entry: {
-      main: "./src/index.js",
+      // Dependencias del main para que se generen primero
+      main: {
+        import: "./src/index.js",
+        dependOn: [
+          "Carrousel",
+          "Controls",
+          "Indicators",
+          "Slides",
+          "DateInput",
+          "EmailInput",
+          "Forms",
+          "FieldInput",
+          "ImageInput",
+          "NumberInput",
+          "OptionsInput",
+          "PasswordInput",
+          "SubmitButton",
+          "TextInput",
+          "TitleContainer",
+          "Modal",
+          "UseModal",
+          "GridSystem",
+          "Cards",
+        ],
+      },
+
+      // Componentes individuales
+      Carrousel: "./src/Components/Carrousel/Carrousel.jsx",
+      Controls: "./src/Components/Carrousel/Controls/Controls.jsx",
+      Indicators: "./src/Components/Carrousel/Indicators/Indicators.jsx",
+      Slides: "./src/Components/Carrousel/Slides/Slides.jsx",
+      DateInput: "./src/Components/Forms/DateInput.jsx",
+      EmailInput: "./src/Components/Forms/EmailInput.jsx",
+      Forms: "./src/Components/Forms/Forms.jsx",
+      FieldInput: "./src/Components/Forms/FieldInput.jsx",
+      ImageInput: "./src/Components/Forms/ImageInput.jsx",
+      NumberInput: "./src/Components/Forms/NumberInput.jsx",
+      OptionsInput: "./src/Components/Forms/OptionsInput.jsx",
+      PasswordInput: "./src/Components/Forms/PasswordInput.jsx",
+      SubmitButton: "./src/Components/Forms/SubmitButton.jsx",
+      TextInput: "./src/Components/Forms/TextInput.jsx",
+      TitleContainer: "./src/Components/Forms/TitleContainer.jsx",
+      Modal: "./src/Components/Modal/Modal.jsx",
+      UseModal: "./src/Components/Modal/UseModal.js",
+      GridSystem: "./src/Components/GridSystem/GridSystem.jsx",
+      Cards: "./src/Components/Cards/Cards.jsx",
     },
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "[name].min.js",
+      filename: (pathData) =>
+        pathData.chunk.name === "main"
+          ? "[name].min.js" // Archivo principal en raíz
+          : "Components/[name].min.js", // Componentes en subdirectorio
       library: {
-        name: "BoltReact",
+        name: "[name]", // Exportación nombrada
         type: "umd",
       },
       globalObject: "this",
@@ -37,23 +84,10 @@ module.exports = (env, argv) => {
             "css-loader",
           ],
         },
-        {
-          test: /\.(png|jpe?g|gif|svg|ico)$/,
-          type: "asset",
-          parser: {
-            dataUrlCondition: {
-              maxSize: 8192,
-            },
-          },
-        },
       ],
     },
     plugins: [
       new CleanWebpackPlugin(),
-      new HtmlWebpackPlugin({
-        template: "./public/index.html",
-        inject: "body",
-      }),
       new MiniCssExtractPlugin({
         filename: "[name].min.css",
       }),
@@ -63,25 +97,10 @@ module.exports = (env, argv) => {
       minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
       splitChunks: {
         chunks: "all",
-        maxSize: 200000,
-        cacheGroups: {
-          vendors: {
-            test: /[\\/]node_modules[\\/]/,
-            name: "vendors",
-            chunks: "all",
-          },
-        },
       },
     },
     resolve: {
       extensions: [".js", ".jsx"],
-    },
-    devtool: isDevelopment ? "source-map" : false,
-    devServer: {
-      static: path.join(__dirname, "dist"),
-      compress: true,
-      port: 8080,
-      historyApiFallback: true,
     },
   };
 };

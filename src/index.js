@@ -1,61 +1,27 @@
-import React, { lazy, Suspense } from "react";
-import "./index.css";
-
-// Importaciones específicas de Bootstrap para reducir el tamaño del bundle
-import "bootstrap/dist/css/bootstrap.min.css";
+// Bootstrap imports
+import "bootstrap/dist/css/bootstrap-grid.min.css"; // Grid
+import "bootstrap/dist/css/bootstrap-reboot.min.css"; // Reboot
 import "bootstrap/js/dist/carousel";
 import "bootstrap/js/dist/modal";
 
-// Lazy Loading de componentes personalizados
-const Carrousel = lazy(() => import("./Components/Carrousel/Carrousel.jsx"));
-const Controls = lazy(() =>
-  import("./Components/Carrousel/Controls/Controls.jsx")
-);
-const Indicators = lazy(() =>
-  import("./Components/Carrousel/Indicators/Indicators.jsx")
-);
-const Slides = lazy(() => import("./Components/Carrousel/Slides/Slides.jsx"));
-const Forms = lazy(() => import("./Components/Forms/Forms.jsx"));
-const CustomModal = lazy(() => import("./Components/Modal/Modal.jsx"));
-const UseModal = lazy(() => import("./Components/Modal/UseModal.js"));
-const GridSystem = lazy(() => import("./Components/GridSystem/GridSystem.jsx"));
-const Cards = lazy(() => import("./Components/Cards/Cards.jsx"));
+// Exportaciones de componentes
+export { default as Carrousel } from "./Components/Carrousel/Carrousel.jsx";
+export { default as Controls } from "./Components/Carrousel/Controls/Controls.jsx";
+export { default as Indicators } from "./Components/Carrousel/Indicators/Indicators.jsx";
+export { default as Slides } from "./Components/Carrousel/Slides/Slides.jsx";
 
-export default function App() {
-  return (
-    <Suspense fallback={<Loading />}>
-      {/* Renderización diferida de los componentes */}
-      <Carrousel>
-        <Slides />
-        <Controls />
-        <Indicators />
-      </Carrousel>
-      <Forms />
-      <CustomModal />
-      <GridSystem />
-      <Cards />
-    </Suspense>
-  );
-}
+export { default as Forms } from "./Components/Forms/Forms.jsx";
+export { default as FieldInput } from "./Components/Forms/FieldInput.jsx";
+export { default as ImageInput } from "./Components/Forms/ImageInput.jsx";
+export { default as NumberInput } from "./Components/Forms/NumberInput.jsx";
+export { default as OptionsInput } from "./Components/Forms/OptionsInput.jsx";
+export { default as PasswordInput } from "./Components/Forms/PasswordInput.jsx";
+export { default as SubmitButton } from "./Components/Forms/SubmitButton.jsx";
+export { default as TextInput } from "./Components/Forms/TextInput.jsx";
+export { default as TitleContainer } from "./Components/Forms/TitleContainer.jsx";
 
-// Componente para mejorar el fallback de Suspense
-function Loading() {
-  return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      <p>Cargando contenido...</p>
-    </div>
-  );
-}
+export { default as Modal } from "./Components/Modal/Modal.jsx";
+export { useModal as UseModal } from "./Components/Modal/UseModal.js";
 
-// Exportación de todos los componentes para reutilización en proyectos externos
-export {
-  Carrousel,
-  Controls,
-  Indicators,
-  Slides,
-  Forms,
-  CustomModal as Modal, // Alias para evitar conflictos
-  UseModal,
-  GridSystem,
-  Cards,
-};
+export { default as GridSystem } from "./Components/GridSystem/GridSystem.jsx";
+export { default as Cards } from "./Components/Cards/Cards.jsx";

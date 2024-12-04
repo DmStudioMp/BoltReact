@@ -1,16 +1,13 @@
 import React from "react";
-import punycode from "punycode";
+import PropTypes from "prop-types";
 
-export default function Controls({ id }) {
-  // Codificar el ID para asegurarse de que solo contenga caracteres ASCII seguros.
-  const encodedId = punycode.encode(id);
-
+export default function Controls({ carouselId }) {
   return (
     <>
       <button
         className="carousel-control-prev"
         type="button"
-        data-bs-target={`#${encodedId}`}
+        data-bs-target={`#${carouselId}`}
         data-bs-slide="prev"
       >
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -19,7 +16,7 @@ export default function Controls({ id }) {
       <button
         className="carousel-control-next"
         type="button"
-        data-bs-target={`#${encodedId}`}
+        data-bs-target={`#${carouselId}`}
         data-bs-slide="next"
       >
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
@@ -28,3 +25,7 @@ export default function Controls({ id }) {
     </>
   );
 }
+
+Controls.propTypes = {
+  carouselId: PropTypes.string,
+};

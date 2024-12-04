@@ -4,7 +4,7 @@ import "./Carrousel.css";
 
 import Indicators from "./Indicators/Indicators.jsx";
 import Controls from "./Controls/Controls.jsx";
-import Slides from "./Slides/Slides.jsx"; // Asegúrate de tener el componente Slides
+
 import { v4 as uuidv4 } from "uuid";
 
 function CarrouselInner({ children }) {
@@ -12,42 +12,37 @@ function CarrouselInner({ children }) {
 }
 
 CarrouselInner.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
-/* Carrousel Component */
-const Carrousel = ({ slides = [], id, children }) => {
-  if (slides.length === 0) return null;
+export default function Carrousel({
+  slides = 3,
+  id = "BoltCarrousel",
+  children,
+}) {
+  if (!Number.isInteger(slides) || slides <= 0) {
+    console.error("The 'slides' prop must be a positive integer.");
+    return null;
+  }
 
-  const uniqueId = id || uuidv4();
+  const uniqueId = id || `carousel-${uuidv4()}`;
 
   return (
-    <div className="carousel" id={uniqueId}>
-      <CarrouselInner>
-        <Slides slides={slides} />
-      </CarrouselInner>
+    <div
+      className="carousel"
+      id={uniqueId}
+      role="region"
+      aria-roledescription="carousel"
+    >
+      <CarrouselInner>{children}</CarrouselInner>
       <Indicators slides={slides} carouselId={uniqueId} />
       <Controls carouselId={uniqueId} />
-      {children && <div className="extra-content">{children}</div>}
     </div>
   );
-};
+}
 
 Carrousel.propTypes = {
-  slides: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      content: PropTypes.node,
-    })
-  ).isRequired,
-  children: PropTypes.node,
+  slides: PropTypes.number,
   id: PropTypes.string,
+  children: PropTypes.node,
 };
-
-Carrousel.defaultProps = {
-  slides: [],
-  id: null,
-  children: null,
-};
-
-export default Carrousel;

@@ -1,17 +1,20 @@
 {
   "name": "boltreact",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "BoltReact es una poderosa librería de componentes React para crear interfaces modernas y dinámicas.",
-  "main": "dist/main.min.js",
+  "main": "src/index.paq.js",
   "files": [
-    "dist",
+    "dist/*.min.js",
+    "dist/*.min.css",
+    "dist/Components/*.min.js",
+    "src/index.paq.js",
     "LICENSE.md",
     "README.md"
   ],
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "npm run clean && webpack --mode production",
-    "clean": "rimraf dist",
+    "clean": "npx rimraf dist",
     "test": "jest"
   },
   "repository": {
@@ -41,18 +44,29 @@
   "devDependencies": {
     "@babel/cli": "^7.25.9",
     "@babel/core": "^7.26.0",
+    "@babel/eslint-parser": "^7.25.9",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/react-hooks": "^8.0.1",
+    "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",
     "clean-webpack-plugin": "^4.0.0",
+    "compression-webpack-plugin": "^11.1.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
+    "depcheck": "^1.4.7",
+    "glob": "^11.0.0",
     "html-webpack-plugin": "^5.6.3",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "mini-css-extract-plugin": "^2.9.2",
-    "rimraf": "^5.0.1",
+    "purgecss-webpack-plugin": "^7.0.2",
+    "rimraf": "^6.0.1",
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.8",
     "webpack": "^5.96.1",
@@ -60,6 +74,7 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
   },
+  "sideEffects": false,
   "publishConfig": {
     "access": "public"
   }
