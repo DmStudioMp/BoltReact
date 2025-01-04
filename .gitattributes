@@ -1,0 +1,25 @@
+# Configuración para mantener consistencia en los finales de línea
+# Fuerza LF para todos los archivos de texto
+* text=auto
+
+# Archivos específicos que deben tener finales de línea LF
+*.sh text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+
+# Archivos binarios que no deben ser modificados por Git
+*.png binary
+*.jpg binary
+*.gif binary
+*.zip binary
+
+# Submódulos
+/.gitmodules text eol=lf
+
+# Directorios específicos para submódulos
+src/Components/Forms/ text eol=lf
+src/Components/Modal/ text eol=lf
+src/Components/Cards/ text eol=lf
+src/Components/GridSystem/ text eol=lf
+src/Components/Carrousel/ text eol=lf
