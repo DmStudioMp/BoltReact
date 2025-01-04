@@ -6,10 +6,10 @@ export default function ImageInput(props) {
     <img
       id={props.id}
       className="mb-4 d-flex rounded-circle"
-      src={props.img}
+      src={props.img || null}
       alt={props.alt || "Image placeholder"}
-      width="72"
-      height="57"
+      width="2.5em"
+      height="2em"
     />
   );
 }

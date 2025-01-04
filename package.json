@@ -1,6 +1,6 @@
 {
   "name": "boltreact",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "BoltReact es una poderosa librería de componentes React para crear interfaces modernas y dinámicas.",
   "main": "src/index.paq.js",
   "files": [
@@ -33,13 +33,9 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "prop-types": "^15.7.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "uuid": "^11.0.3"
-  },
-  "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.9",
@@ -50,8 +46,6 @@
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.0.1",
-    "@testing-library/react-hooks": "^8.0.1",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",
     "clean-webpack-plugin": "^4.0.0",
@@ -71,7 +65,7 @@
     "terser-webpack-plugin": "^5.3.8",
     "webpack": "^5.96.1",
     "webpack-bundle-analyzer": "^4.10.2",
-    "webpack-cli": "^5.1.4",
+    "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.1.0"
   },
   "sideEffects": false,

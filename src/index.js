@@ -21,7 +21,7 @@ export { default as TextInput } from "./Components/Forms/TextInput.jsx";
 export { default as TitleContainer } from "./Components/Forms/TitleContainer.jsx";
 
 export { default as Modal } from "./Components/Modal/Modal.jsx";
-export { useModal as UseModal } from "./Components/Modal/UseModal.js";
+export { default as UseModal } from "./Components/Modal/UseModal.js";
 
 export { default as GridSystem } from "./Components/GridSystem/GridSystem.jsx";
 export { default as Cards } from "./Components/Cards/Cards.jsx";
